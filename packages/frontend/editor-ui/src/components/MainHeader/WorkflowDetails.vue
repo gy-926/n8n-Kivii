@@ -618,7 +618,7 @@ function showCreateWorkflowSuccessToast(id?: string) {
 					:workflow-permissions="workflowPermissions"
 				/>
 			</span>
-			<EnterpriseEdition :features="[EnterpriseEditionFeature.Sharing]">
+			<!-- <EnterpriseEdition :features="[EnterpriseEditionFeature.Sharing]">
 				<div :class="$style.group">
 					<CollaborationPane v-if="!isNewWorkflow" />
 					<N8nButton
@@ -656,7 +656,7 @@ function showCreateWorkflowSuccessToast(id?: string) {
 						</template>
 					</N8nTooltip>
 				</template>
-			</EnterpriseEdition>
+			</EnterpriseEdition> -->
 			<div :class="$style.group">
 				<SaveButton
 					type="primary"
