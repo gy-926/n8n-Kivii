@@ -58,7 +58,8 @@ onMounted(() => {
 <template>
 	<div :class="containerClasses" data-test-id="n8n-logo">
 		<LogoIcon ref="logo" :class="$style.logo" />
-		<LogoText v-if="showLogoText" :class="$style.logoText" />
+		<!-- <LogoText v-if="showLogoText" :class="$style.logoText" /> -->
+		<span v-if="showLogoText" :class="$style.logoText">K5 Workflow</span>
 		<slot />
 	</div>
 </template>
@@ -88,8 +89,8 @@ onMounted(() => {
 }
 
 .logoText {
-	margin-left: var(--spacing-xs);
-	margin-right: var(--spacing-3xs);
+	margin-left: 20px !important;
+	font-size: 12px;
 }
 
 .sidebarExpanded .logo {
