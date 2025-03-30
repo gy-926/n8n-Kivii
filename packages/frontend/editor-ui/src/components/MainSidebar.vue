@@ -90,7 +90,7 @@ const mainMenuItems = computed(() => [
 		icon: 'box-open',
 		label: i18n.baseText('mainSidebar.templates'),
 		position: 'bottom',
-		available: settingsStore.isTemplatesEnabled && !templatesStore.hasCustomTemplatesHost,
+		available: false,
 		link: {
 			href: templatesStore.websiteTemplateRepositoryURL,
 			target: '_blank',
@@ -102,6 +102,7 @@ const mainMenuItems = computed(() => [
 		label: i18n.baseText('mainSidebar.variables'),
 		customIconSize: 'medium',
 		position: 'bottom',
+		available: false,
 		route: { to: { name: VIEWS.VARIABLES } },
 	},
 	{
@@ -109,6 +110,7 @@ const mainMenuItems = computed(() => [
 		icon: 'question',
 		label: i18n.baseText('mainSidebar.help'),
 		position: 'bottom',
+		available: false,
 		children: [
 			{
 				id: 'quickstart',
