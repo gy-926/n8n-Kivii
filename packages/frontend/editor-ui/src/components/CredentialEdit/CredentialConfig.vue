@@ -92,14 +92,86 @@ onBeforeMount(async () => {
 
 	if (i18n.exists(key)) return;
 
-	const credTranslation = await credentialsStore.getCredentialTranslation(
-		props.credentialType.name,
-	);
+	try {
+		// 首先尝试加载当前语言的翻译
+		const credTranslation = await credentialsStore.getCredentialTranslation(
+			props.credentialType.name,
+		);
 
-	addCredentialTranslation(
-		{ [props.credentialType.name]: credTranslation },
-		rootStore.defaultLocale,
-	);
+		// 检查是否获得有效的翻译数据（不为null且有内容）
+		if (
+			credTranslation &&
+			typeof credTranslation === 'object' &&
+			Object.keys(credTranslation).length > 0
+		) {
+			// 如果找到当前语言的翻译，正常添加
+			addCredentialTranslation(
+				{ [props.credentialType.name]: credTranslation },
+				rootStore.defaultLocale,
+			);
+		} else {
+			// 如果当前语言没有找到翻译，尝试加载英文翻译作为备用
+			console.log(
+				`未找到凭证类型的 ${rootStore.defaultLocale} 翻译: ${props.credentialType.name}, 尝试加载英文翻译`,
+			);
+
+			// 临时将默认语言设置为英文来获取英文翻译
+			const originalLocale = rootStore.defaultLocale;
+			rootStore.defaultLocale = 'en';
+
+			try {
+				const enCredTranslation = await credentialsStore.getCredentialTranslation(
+					props.credentialType.name,
+				);
+
+				if (
+					enCredTranslation &&
+					typeof enCredTranslation === 'object' &&
+					Object.keys(enCredTranslation).length > 0
+				) {
+					// 添加英文翻译但保持界面语言不变
+					addCredentialTranslation(
+						{ [props.credentialType.name]: enCredTranslation },
+						originalLocale,
+					);
+					console.log(`成功加载英文凭证翻译作为备用`);
+				}
+			} catch (enError) {
+				console.warn(`加载英文凭证翻译失败: ${props.credentialType.name}`, enError);
+			} finally {
+				// 恢复原来的语言设置
+				rootStore.defaultLocale = originalLocale;
+			}
+		}
+	} catch (error) {
+		console.warn(`加载凭证类型翻译失败: ${props.credentialType.name}`, error);
+
+		// 出错时尝试加载英文翻译作为备用
+		const originalLocale = rootStore.defaultLocale;
+		rootStore.defaultLocale = 'en';
+
+		try {
+			const enCredTranslation = await credentialsStore.getCredentialTranslation(
+				props.credentialType.name,
+			);
+
+			if (
+				enCredTranslation &&
+				typeof enCredTranslation === 'object' &&
+				Object.keys(enCredTranslation).length > 0
+			) {
+				addCredentialTranslation(
+					{ [props.credentialType.name]: enCredTranslation },
+					originalLocale,
+				);
+				console.log(`错误恢复：加载英文凭证翻译作为备用`);
+			}
+		} catch (enError) {
+			console.warn(`加载英文凭证翻译备用也失败: ${props.credentialType.name}`, enError);
+		} finally {
+			rootStore.defaultLocale = originalLocale;
+		}
+	}
 });
 
 const appName = computed(() => {
@@ -304,6 +376,7 @@ watch(showOAuthSuccessBanner, (newValue, oldValue) => {
 			/>
 
 			<template v-if="credentialPermissions.update">
+				<!--
 				<n8n-notice
 					v-if="documentationUrl && credentialProperties.length && !showCredentialDocs"
 					theme="warning"
@@ -315,6 +388,7 @@ watch(showOAuthSuccessBanner, (newValue, oldValue) => {
 						</n8n-link>
 					</span>
 				</n8n-notice>
+				-->
 
 				<AuthTypeSelector
 					v-if="showAuthTypeSelector && isNewCredential"

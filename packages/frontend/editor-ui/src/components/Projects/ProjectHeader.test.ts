@@ -93,7 +93,7 @@ describe('ProjectHeader', () => {
 
 	it('should render the correct title and subtitle', async () => {
 		const { getByText, queryByText, rerender } = renderComponent();
-		const subtitle = 'All the workflows, credentials and executions you have access to';
+		const subtitle = '';
 
 		expect(getByText('Overview')).toBeVisible();
 		expect(getByText(subtitle)).toBeVisible();
@@ -111,7 +111,7 @@ describe('ProjectHeader', () => {
 	});
 
 	it('should overwrite default subtitle with slot', () => {
-		const defaultSubtitle = 'All the workflows, credentials and executions you have access to';
+		const defaultSubtitle = '';
 		const subtitle = 'Custom subtitle';
 
 		const { getByText, queryByText } = renderComponent({

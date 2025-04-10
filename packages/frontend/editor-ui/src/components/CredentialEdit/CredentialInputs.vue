@@ -7,6 +7,7 @@ import type {
 import type { IUpdateInformation } from '@/Interface';
 import ParameterInputExpanded from '../ParameterInputExpanded.vue';
 import { computed } from 'vue';
+import { useI18n } from '@/composables/useI18n';
 
 type Props = {
 	credentialProperties: INodeProperties[];
@@ -16,6 +17,7 @@ type Props = {
 };
 
 const props = defineProps<Props>();
+const i18n = useI18n();
 
 const credentialDataValues = computed(
 	() => props.credentialData as Record<string, NodeParameterValueType>,
@@ -57,6 +59,11 @@ function valueChanged(parameterData: IUpdateInformation) {
 				@update="valueChanged"
 			/>
 		</form>
+	</div>
+	<div v-else>
+		<n8n-info-tip>
+			{{ i18n.baseText('credentialEdit.credentialInputs.noAdditionalFields') }}
+		</n8n-info-tip>
 	</div>
 </template>
 
