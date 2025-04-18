@@ -432,7 +432,7 @@ onClickOutside(createBtn as Ref<VueInstance>, () => {
 			<template #menuSuffix>
 				<div>
 					<div
-						v-if="hasVersionUpdates"
+						v-if="false"
 						data-test-id="version-updates-panel-button"
 						:class="$style.updates"
 						@click="openUpdatesPanel"
@@ -563,8 +563,10 @@ onClickOutside(createBtn as Ref<VueInstance>, () => {
 	svg {
 		color: var(--color-text-base) !important;
 	}
+
 	span {
 		display: none;
+
 		&.expanded {
 			display: initial;
 		}

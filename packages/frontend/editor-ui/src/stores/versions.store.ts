@@ -23,11 +23,11 @@ export const useVersionsStore = defineStore(STORES.VERSIONS, () => {
 	// ---------------------------------------------------------------------------
 
 	const hasVersionUpdates = computed(() => {
-		return nextVersions.value.length > 0;
+		return false;
 	});
 
 	const areNotificationsEnabled = computed(() => {
-		return versionNotificationSettings.value.enabled;
+		return false;
 	});
 
 	const infoUrl = computed(() => {
