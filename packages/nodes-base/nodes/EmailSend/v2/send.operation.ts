@@ -216,22 +216,22 @@ export async function execute(this: IExecuteFunctions): Promise<INodeExecutionDa
 				appendAttribution = nodeVersion >= 2.1;
 			}
 
-			if (appendAttribution) {
-				const attributionText = 'This email was sent automatically with ';
-				const link = createUtmCampaignLink('n8n-nodes-base.emailSend', instanceId);
-				if (emailFormat === 'html' || (emailFormat === 'both' && mailOptions.html)) {
-					mailOptions.html = `
-					${mailOptions.html}
-					<br>
-					<br>
-					---
-					<br>
-					<em>${attributionText}<a href="${link}" target="_blank">n8n</a></em>
-					`;
-				} else {
-					mailOptions.text = `${mailOptions.text}\n\n---\n${attributionText}n8n\n${'https://n8n.io'}`;
-				}
-			}
+			// if (appendAttribution) {
+			// 	const attributionText = 'This email was sent automatically with ';
+			// 	const link = createUtmCampaignLink('n8n-nodes-base.emailSend', instanceId);
+			// 	if (emailFormat === 'html' || (emailFormat === 'both' && mailOptions.html)) {
+			// 		mailOptions.html = `
+			// 		${mailOptions.html}
+			// 		<br>
+			// 		<br>
+			// 		---
+			// 		<br>
+			// 		<em>${attributionText}<a href="${link}" target="_blank">n8n</a></em>
+			// 		`;
+			// 	} else {
+			// 		mailOptions.text = `${mailOptions.text}\n\n---\n${attributionText}n8n\n${'https://n8n.io'}`;
+			// 	}
+			// }
 
 			if (options.attachments && item.binary) {
 				const attachments = [];

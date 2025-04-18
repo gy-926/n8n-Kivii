@@ -107,14 +107,14 @@ const options = computed<ITab[]>(() => {
 		});
 	}
 
-	if (documentationUrl.value) {
+	/* if (documentationUrl.value) {
 		options.push({
 			label: i18n.baseText('nodeSettings.docs'),
 			value: 'docs',
 			href: documentationUrl.value,
 			align: 'right',
 		});
-	}
+	} */
 
 	return options;
 });

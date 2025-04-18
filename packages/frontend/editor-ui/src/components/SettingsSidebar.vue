@@ -58,7 +58,7 @@ const sidebarMenuItems = computed<IMenuItem[]>(() => {
 			available: settingsStore.isPublicApiEnabled && canUserAccessRouteByName(VIEWS.API_SETTINGS),
 			route: { to: { name: VIEWS.API_SETTINGS } },
 		},
-		{
+		/* {
 			id: 'settings-external-secrets',
 			icon: 'vault',
 			label: i18n.baseText('settings.externalSecrets.title'),
@@ -90,7 +90,7 @@ const sidebarMenuItems = computed<IMenuItem[]>(() => {
 			position: 'top',
 			available: canUserAccessRouteByName(VIEWS.LDAP_SETTINGS),
 			route: { to: { name: VIEWS.LDAP_SETTINGS } },
-		},
+		}, */
 		{
 			id: 'settings-workersview',
 			icon: 'project-diagram',
@@ -103,14 +103,14 @@ const sidebarMenuItems = computed<IMenuItem[]>(() => {
 		},
 	];
 
-	menuItems.push({
+	/* menuItems.push({
 		id: 'settings-log-streaming',
 		icon: 'sign-in-alt',
 		label: i18n.baseText('settings.log-streaming'),
 		position: 'top',
 		available: canUserAccessRouteByName(VIEWS.LOG_STREAMING_SETTINGS),
 		route: { to: { name: VIEWS.LOG_STREAMING_SETTINGS } },
-	});
+	}); */
 
 	menuItems.push({
 		id: 'settings-community-nodes',
@@ -138,9 +138,9 @@ const sidebarMenuItems = computed<IMenuItem[]>(() => {
 			</template>
 			<template #menuSuffix>
 				<div :class="$style.versionContainer">
-					<n8n-link size="small" @click="uiStore.openModal(ABOUT_MODAL_KEY)">
+					<!-- <n8n-link size="small" @click="uiStore.openModal(ABOUT_MODAL_KEY)">
 						{{ i18n.baseText('settings.version') }} {{ rootStore.versionCli }}
-					</n8n-link>
+					</n8n-link> -->
 				</div>
 			</template>
 		</n8n-menu>

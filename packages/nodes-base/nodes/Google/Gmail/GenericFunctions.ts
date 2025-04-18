@@ -432,22 +432,22 @@ export function prepareEmailBody(
 	const emailType = this.getNodeParameter('emailType', itemIndex) as string;
 	let message = (this.getNodeParameter('message', itemIndex, '') as string).trim();
 
-	if (appendAttribution) {
-		const attributionText = 'This email was sent automatically with ';
-		const link = createUtmCampaignLink('n8n-nodes-base.gmail', instanceId);
-		if (emailType === 'html') {
-			message = `
-			${message}
-			<br>
-			<br>
-			---
-			<br>
-			<em>${attributionText}<a href="${link}" target="_blank">n8n</a></em>
-			`;
-		} else {
-			message = `${message}\n\n---\n${attributionText}n8n\n${'https://n8n.io'}`;
-		}
-	}
+	// if (appendAttribution) {
+	// 	const attributionText = 'This email was sent automatically with ';
+	// 	const link = createUtmCampaignLink('n8n-nodes-base.gmail', instanceId);
+	// 	if (emailType === 'html') {
+	// 		message = `
+	// 		${message}
+	// 		<br>
+	// 		<br>
+	// 		---
+	// 		<br>
+	// 		<em>${attributionText}<a href="${link}" target="_blank">n8n</a></em>
+	// 		`;
+	// 	} else {
+	// 		message = `${message}\n\n---\n${attributionText}n8n\n${'https://n8n.io'}`;
+	// 	}
+	// }
 
 	const body = {
 		body: '',

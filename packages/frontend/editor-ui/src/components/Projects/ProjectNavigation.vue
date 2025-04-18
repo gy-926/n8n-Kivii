@@ -104,13 +104,13 @@ const showAddFirstProject = computed(
 			:collapse="props.collapsed"
 			:class="$style.projectItems"
 		>
-			<N8nMenuItem
+			<!-- <N8nMenuItem
 				:item="personalProject"
 				:compact="props.collapsed"
 				:active-tab="projectsStore.projectNavActiveId"
 				mode="tabs"
 				data-test-id="project-personal-menu-item"
-			/>
+			/> -->
 			<N8nMenuItem
 				v-for="project in displayProjects"
 				:key="project.id"
