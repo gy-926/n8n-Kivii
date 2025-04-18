@@ -182,7 +182,8 @@ const createBtn = ref<InstanceType<typeof N8nNavigationDropdown>>();
 const isCollapsed = computed(() => uiStore.sidebarMenuCollapsed);
 
 const hasVersionUpdates = computed(
-	() => settingsStore.settings.releaseChannel === 'stable' && versionsStore.hasVersionUpdates,
+	() =>
+		false && settingsStore.settings.releaseChannel === 'stable' && versionsStore.hasVersionUpdates,
 );
 
 const nextVersions = computed(() => versionsStore.nextVersions);
@@ -431,6 +432,8 @@ onClickOutside(createBtn as Ref<VueInstance>, () => {
 			</template>
 			<template #menuSuffix>
 				<div>
+					<!-- 更新提示已被注释掉 -->
+					<!--
 					<div
 						v-if="false"
 						data-test-id="version-updates-panel-button"
@@ -449,6 +452,7 @@ onClickOutside(createBtn as Ref<VueInstance>, () => {
 							}}
 						</N8nText>
 					</div>
+					-->
 					<MainSidebarSourceControl :is-collapsed="isCollapsed" />
 				</div>
 			</template>

@@ -1267,7 +1267,7 @@ const onCreateWorkflowClick = () => {
 			</N8nTooltip>
 		</template>
 		<template #callout>
-			<N8nCallout
+			<!-- <N8nCallout
 				v-if="showEasyAIWorkflowCallout && easyAICalloutVisible"
 				theme="secondary"
 				icon="robot"
@@ -1293,7 +1293,7 @@ const onCreateWorkflowClick = () => {
 						/>
 					</div>
 				</template>
-			</N8nCallout>
+</N8nCallout> -->
 		</template>
 		<template #breadcrumbs>
 			<div v-if="breadcrumbsLoading" :class="$style['breadcrumbs-loading']">
@@ -1369,7 +1369,7 @@ const onCreateWorkflowClick = () => {
 						{{ i18n.baseText('workflows.empty.startFromScratch') }}
 					</N8nText>
 				</N8nCard>
-				<N8nCard
+				<!-- <N8nCard
 					v-if="showEasyAIWorkflowCallout"
 					:class="$style.emptyStateCard"
 					hoverable
@@ -1380,7 +1380,7 @@ const onCreateWorkflowClick = () => {
 					<N8nText size="large" class="mt-xs pl-2xs pr-2xs" color="text-dark">
 						{{ i18n.baseText('workflows.empty.easyAI') }}
 					</N8nText>
-				</N8nCard>
+				</N8nCard> -->
 			</div>
 		</template>
 		<template #filters="{ setKeyValue }">
@@ -1530,12 +1530,15 @@ const onCreateWorkflowClick = () => {
 .add-folder-modal {
 	width: 500px;
 	padding-bottom: 0;
+
 	.el-message-box__message {
 		font-size: var(--font-size-xl);
 	}
+
 	.el-message-box__btns {
 		padding: 0 var(--spacing-l) var(--spacing-l);
 	}
+
 	.el-message-box__content {
 		padding: var(--spacing-l);
 	}
